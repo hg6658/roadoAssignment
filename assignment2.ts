@@ -30,13 +30,14 @@ class Graph {
     }
 
     validateTrips(pickupPoints: string[], dropPoints: string[]): boolean {
-        const visited = new Set<string>();
+        let visited = new Set<string>();
         const dropPointsSet = new Set(dropPoints);
 
         for (const pickupPoint of pickupPoints) {
-            if(this.dfs(pickupPoint, visited, dropPointsSet)==false){
+            if(this.dfs(pickupPoint, visited, dropPointsSet)==false){  
               return false;
             }
+            visited = new Set<string>();
         }
 
         return true; // All drop points reached
